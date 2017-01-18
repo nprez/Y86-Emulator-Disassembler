@@ -1,0 +1,11 @@
+30f400180000|2045|804a010000| set up stack, call ploop
+halt: 10|00|
+back: a05f|2045|30f010000000|6104|4075fcffffff|30f001000000|6277|7345010000| jump if r7=0 to break
+5035fcffffff|6103|2037|800f010000| use r7 to put each num on stack, call back
+5035fcffffff|6430| get num from stack to multiply r0 by
+break: 2054|b05f|90| do the factorial, ret to end
+ploop: a05f|2045|30f304000000|30f001000000|30f212000000|d03f00000000|6003|6102|7460010000| restart till done
+30f120000000|c11f00000000|73ae010000| put 32 in r1, read 4, ? jump to halt
+507100000000|800f010000| put r1 in r7, call back
+end: 30f124000000|400100000000|d11f00000000| r1=36,put r0 at 36, print 4 chars at 36
+30f128000000|d01f00000000|704e010000|2054|b05f|90 r1=40, print char at 40, jump to ploop's 3rd
